@@ -1,5 +1,6 @@
 import streamlit as st
 import datetime
+import urllib.parse
 
 # Configurações da página
 st.set_page_config(
@@ -17,7 +18,6 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* Esconder menu e sidebar */
 #MainMenu, header, footer {visibility: hidden;}
 section[data-testid="stSidebar"] { display: none !important; }
 
@@ -66,7 +66,6 @@ section[data-testid="stSidebar"] { display: none !important; }
 </style>
 """, unsafe_allow_html=True)
 
-# === CONTEÚDO PRINCIPAL ===
 st.markdown("""
     <h1 style='text-align:center;'>🚀 Bem-vindo ao Gerenciador Financeiro</h1>
     <p style='text-align:center; color:#B0B0B0;'>Organize suas finanças, acompanhe receitas, gastos, metas e conquiste o controle da sua vida financeira.</p>
@@ -76,41 +75,44 @@ st.markdown("""
 <div class='card-grid'>
     <a href='?page=Dashboard' target='_self'><div class='card-container'>
         <div class='card-title'>📊 Dashboard</div>
-        <div class='card-desc'>Visão geral das finanças com análise 50/30/20.</div>
+        <div class='card-desc'>Visão geral com análise 50/30/20.</div>
     </div></a>
     <a href='?page=Contas' target='_self'><div class='card-container'>
         <div class='card-title'>🏦 Contas</div>
-        <div class='card-desc'>Gerencie saldos em diferentes contas.</div>
+        <div class='card-desc'>Gerencie saldos e bancos.</div>
     </div></a>
     <a href='?page=Receitas' target='_self'><div class='card-container'>
         <div class='card-title'>💰 Receitas</div>
-        <div class='card-desc'>Cadastre e visualize todas as entradas financeiras.</div>
+        <div class='card-desc'>Entradas por categoria.</div>
     </div></a>
     <a href='?page=Gastos' target='_self'><div class='card-container'>
         <div class='card-title'>💸 Gastos</div>
-        <div class='card-desc'>Controle completo das despesas mensais.</div>
+        <div class='card-desc'>Despesas organizadas e controladas.</div>
     </div></a>
     <a href='?page=Metas' target='_self'><div class='card-container'>
         <div class='card-title'>🎯 Metas</div>
-        <div class='card-desc'>Defina objetivos financeiros e acompanhe seu progresso.</div>
+        <div class='card-desc'>Planeje objetivos com prazos.</div>
     </div></a>
     <a href='?page=Dividas' target='_self'><div class='card-container'>
         <div class='card-title'>📉 Dívidas</div>
-        <div class='card-desc'>Gerencie dívidas e parcelas com clareza.</div>
+        <div class='card-desc'>Controle de débitos e vencimentos.</div>
     </div></a>
     <a href='?page=Parcelas' target='_self'><div class='card-container'>
         <div class='card-title'>📆 Parcelas</div>
-        <div class='card-desc'>Controle de pagamentos recorrentes.</div>
+        <div class='card-desc'>Pagamentos recorrentes.</div>
+    </div></a>
+    <a href='?page=ResumoMensal' target='_self'><div class='card-container'>
+        <div class='card-title'>📅 Resumo Mensal</div>
+        <div class='card-desc'>Análise consolidada por mês.</div>
     </div></a>
     <a href='?page=Insights' target='_self'><div class='card-container'>
         <div class='card-title'>🤖 Insights</div>
-        <div class='card-desc'>Receba sugestões automáticas com IA.</div>
+        <div class='card-desc'>Recomendações com IA.</div>
     </div></a>
 </div>
 """, unsafe_allow_html=True)
 
 # === REDIRECIONAMENTO PARA AS PÁGINAS ===
-import urllib.parse
 page = st.query_params.get("page")
 
 if page == "Dashboard":
@@ -127,6 +129,8 @@ elif page == "Dividas":
     st.switch_page("pages/4_Dividas.py")
 elif page == "Parcelas":
     st.switch_page("pages/5_Parcelas.py")
+elif page == "ResumoMensal":
+    st.switch_page("pages/8_Resumo_mensal.py")
 elif page == "Insights":
     st.switch_page("pages/7_Insights.py")
 
