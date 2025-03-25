@@ -1,0 +1,7 @@
+[theme]
+base="dark"
+primaryColor="#8A05BE"  # Primary Nubank-like purple
+backgroundColor="#121212"  # Deep dark background
+secondaryBackgroundColor="#1E1E1E"  # Slightly lighter dark background
+textColor="#F5F5F5"  # Soft white for primary text
+font="sans serif"
