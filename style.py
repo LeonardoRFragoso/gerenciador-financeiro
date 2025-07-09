@@ -1,22 +1,36 @@
-"""
-Estilos centralizados para o Gerenciador Financeiro
-"""
+"""Estilos centralizados e temas para o Gerenciador Financeiro."""
 
-# Cores principais
-COLORS = {
-    'primary': '#8A05BE',      # Roxo principal
-    'secondary': '#B5FF5A',    # Verde neon
-    'background': '#0A0A0F',   # Fundo escuro
-    'surface': '#1E1E1E',      # Superfície dos cards
-    'text': '#F5F5F5',         # Texto principal
-    'text_secondary': 'rgba(245, 245, 245, 0.7)',  # Texto secundário
-    'success': '#B5FF5A',      # Sucesso (verde)
-    'warning': '#FFB74D',      # Alerta (laranja)
-    'error': '#FF4D4D',        # Erro (vermelho)
+# Paletas de cores para os temas claro e escuro
+THEMES = {
+    "dark": {
+        "primary": "#8A05BE",          # Roxo principal
+        "secondary": "#B5FF5A",        # Verde neon
+        "background": "#0A0A0F",       # Fundo escuro
+        "surface": "rgba(10, 10, 15, 0.5)",
+        "text": "#F5F5F5",             # Texto principal
+        "text_secondary": "rgba(245, 245, 245, 0.7)",
+        "success": "#B5FF5A",
+        "warning": "#FFB74D",
+        "error": "#FF4D4D",
+    },
+    "light": {
+        "primary": "#8A05BE",
+        "secondary": "#B5FF5A",
+        "background": "#FFFFFF",
+        "surface": "rgba(255, 255, 255, 0.8)",
+        "text": "#0A0A0F",
+        "text_secondary": "rgba(10, 10, 15, 0.7)",
+        "success": "#4CAF50",
+        "warning": "#FFB74D",
+        "error": "#FF4D4D",
+    },
 }
 
+# Cores ativas (inicialmente tema escuro)
+COLORS = THEMES["dark"]
+
 # Estilos CSS comuns
-STYLES = """
+STYLES_TEMPLATE = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
@@ -81,9 +95,79 @@ div[data-testid="collapsedControl"] { display: none !important; }
     margin: 20px 0;
 }
 
+/* Grid de cards da página inicial */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 20px;
+}
+
+/* Cartão da página inicial */
+.card-container {
+    background: linear-gradient(135deg, rgba(138, 5, 190, 0.1) 0%%, rgba(181, 255, 90, 0.05) 100%%);
+    border: 1px solid rgba(138, 5, 190, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, %(primary)s, %(secondary)s);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.card-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(138, 5, 190, 0.2);
+    border-color: rgba(138, 5, 190, 0.5);
+}
+
+.card-container:hover::before {
+    transform: scaleX(1);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: %(secondary)s;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-desc {
+    font-size: 0.9rem;
+    color: %(text_secondary)s;
+    line-height: 1.5;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(0deg, rgba(138, 5, 190, 0.1) 0%%, rgba(10, 10, 15, 0) 100%%);
+    margin-top: 60px;
+}
+
+.footer-text {
+    color: %(text_secondary)s;
+    font-size: 0.9rem;
+}
+
 /* Cards */
 .card {
-    background: rgba(10, 10, 15, 0.5);
+    background: %(surface)s;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(138, 5, 190, 0.2);
     border-radius: 15px;
@@ -99,7 +183,7 @@ div[data-testid="collapsedControl"] { display: none !important; }
 
 /* Métricas */
 .metric-card {
-    background: rgba(10, 10, 15, 0.5);
+    background: %(surface)s;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(138, 5, 190, 0.2);
     border-radius: 15px;
@@ -193,7 +277,7 @@ div[data-testid="collapsedControl"] { display: none !important; }
 
 /* Tabelas */
 .dataframe {
-    background: rgba(10, 10, 15, 0.5);
+    background: %(surface)s;
     border-radius: 10px;
     border: 1px solid rgba(138, 5, 190, 0.2);
 }
@@ -211,7 +295,7 @@ div[data-testid="collapsedControl"] { display: none !important; }
 
 /* Gráficos */
 .plot-container {
-    background: rgba(10, 10, 15, 0.5);
+    background: %(surface)s;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(138, 5, 190, 0.2);
     border-radius: 15px;
@@ -229,12 +313,70 @@ div[data-testid="collapsedControl"] { display: none !important; }
     }
 }
 </style>
-""" % COLORS
+"""
 
-def apply_style():
-    """Aplica os estilos definidos na página atual."""
+def _build_plotly_layout(colors: dict, theme: str) -> dict:
+    """Retorna o layout padrão do Plotly de acordo com o tema."""
+    template = "plotly_dark" if theme == "dark" else "plotly_white"
+    return {
+        "template": template,
+        "plot_bgcolor": "rgba(0,0,0,0)",
+        "paper_bgcolor": "rgba(0,0,0,0)",
+        "font": {
+            "family": "Inter",
+            "color": colors["text"],
+        },
+        "title": {"font": {"size": 20, "color": colors["secondary"]}},
+        "xaxis": {
+            "gridcolor": "rgba(138, 5, 190, 0.1)",
+            "tickfont": {"color": colors["text_secondary"]},
+        },
+        "yaxis": {
+            "gridcolor": "rgba(138, 5, 190, 0.1)",
+            "tickfont": {"color": colors["text_secondary"]},
+        },
+    }
+
+
+def apply_style(theme: str | None = None):
+    """Aplica os estilos definidos na página atual.
+
+    O tema pode ser "dark" ou "light". Se nenhum for informado, utiliza o
+    valor armazenado em ``st.session_state['theme']`` ou ``"dark"``.
+    """
     import streamlit as st
-    st.markdown(STYLES, unsafe_allow_html=True)
+
+    if theme is None:
+        theme = st.session_state.get("theme", "dark")
+
+    theme = theme if theme in THEMES else "dark"
+
+    # Atualiza cores e layout globais
+    global COLORS, PLOTLY_LAYOUT
+    COLORS = THEMES[theme]
+    PLOTLY_LAYOUT = _build_plotly_layout(COLORS, theme)
+
+    st.session_state["theme"] = theme
+    st.markdown(STYLES_TEMPLATE % COLORS, unsafe_allow_html=True)
+
+
+def theme_toggle(label: str = "Tema") -> str:
+    """Exibe um seletor de tema e retorna o tema escolhido."""
+    import streamlit as st
+
+    current = st.session_state.get("theme", "dark")
+    option = st.radio(
+        label,
+        ["Claro", "Escuro"],
+        horizontal=True,
+        index=0 if current == "light" else 1,
+    )
+    theme = "light" if option == "Claro" else "dark"
+    st.session_state["theme"] = theme
+    return theme
+
+# Layout padrão inicial para Plotly
+PLOTLY_LAYOUT = _build_plotly_layout(COLORS, "dark")
 
 def format_currency(value):
     """Formata um valor para moeda brasileira."""
@@ -243,28 +385,3 @@ def format_currency(value):
 def format_percent(value):
     """Formata um valor para porcentagem."""
     return f"{value:.1f}%"
-
-# Configurações padrão para gráficos Plotly
-PLOTLY_LAYOUT = {
-    "template": "plotly_dark",
-    "plot_bgcolor": "rgba(0,0,0,0)",
-    "paper_bgcolor": "rgba(0,0,0,0)",
-    "font": {
-        "family": "Inter",
-        "color": COLORS['text']
-    },
-    "title": {
-        "font": {
-            "size": 20,
-            "color": COLORS['secondary']
-        }
-    },
-    "xaxis": {
-        "gridcolor": "rgba(138, 5, 190, 0.1)",
-        "tickfont": {"color": COLORS['text_secondary']}
-    },
-    "yaxis": {
-        "gridcolor": "rgba(138, 5, 190, 0.1)",
-        "tickfont": {"color": COLORS['text_secondary']}
-    }
-}

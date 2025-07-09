@@ -3,12 +3,13 @@ import datetime
 import pandas as pd
 import plotly.express as px
 from utils import add_meta, update_meta, delete_meta, get_metas, rerun, configurar_pagina
-from style import apply_style, format_currency, COLORS, PLOTLY_LAYOUT
+from style import apply_style, theme_toggle, format_currency, COLORS, PLOTLY_LAYOUT
 
 configurar_pagina("Metas")
 
-# Aplicar estilos
-apply_style()
+# Seleção de tema
+theme = theme_toggle()
+apply_style(theme)
 
 # Botão para voltar
 if st.button("🔙 Voltar à Página Inicial"):

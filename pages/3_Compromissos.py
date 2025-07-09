@@ -4,12 +4,13 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from utils import add_compromisso, update_compromisso, delete_compromisso, get_compromissos, rerun, configurar_pagina
-from style import apply_style, format_currency, COLORS, PLOTLY_LAYOUT
+from style import apply_style, theme_toggle, format_currency, COLORS, PLOTLY_LAYOUT
 
 configurar_pagina("Compromissos Financeiros")
 
-# Aplicar estilos
-apply_style()
+# Seleção de tema
+theme = theme_toggle()
+apply_style(theme)
 
 # Botão para voltar
 if st.button("🔙 Voltar à Página Inicial"):

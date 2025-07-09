@@ -3,12 +3,13 @@ import datetime
 import pandas as pd
 import plotly.express as px
 from utils import add_gasto, update_gasto, delete_gasto, get_gastos, rerun, configurar_pagina
-from style import apply_style, format_currency, COLORS, PLOTLY_LAYOUT
+from style import apply_style, theme_toggle, format_currency, COLORS, PLOTLY_LAYOUT
 
 configurar_pagina("Gastos")
 
-# Aplicar estilos
-apply_style()
+# Seleção de tema
+theme = theme_toggle()
+apply_style(theme)
 
 # Botão de retorno
 if st.button("🔙 Voltar à Página Inicial"):

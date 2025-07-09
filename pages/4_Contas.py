@@ -1,12 +1,13 @@
 import streamlit as st
 import datetime
 from utils import add_conta, update_conta, delete_conta, get_contas, rerun, configurar_pagina
-from style import apply_style, format_currency, COLORS
+from style import apply_style, theme_toggle, format_currency, COLORS
 
 configurar_pagina("Contas")
 
-# Aplicar estilos
-apply_style()
+# Seleção de tema
+theme = theme_toggle()
+apply_style(theme)
 
 # Botão de retorno para a página inicial
 if st.button("🔙 Voltar à Página Inicial"):

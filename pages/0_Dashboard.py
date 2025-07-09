@@ -3,8 +3,13 @@ import pandas as pd
 import plotly.express as px
 from utils import get_receitas, get_gastos, get_contas, get_dividas, get_parcelas, add_meta, get_metas, configurar_pagina
 import datetime
+from style import apply_style, theme_toggle
 
 configurar_pagina("Dashboard")
+
+# Seleção de tema e aplicação de estilos
+theme = theme_toggle()
+apply_style(theme)
 
 # Estilo moderno e futurista
 st.markdown("""
