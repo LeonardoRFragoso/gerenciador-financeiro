@@ -3,12 +3,13 @@ import datetime
 import pandas as pd
 import plotly.express as px
 from utils import get_receitas, get_gastos, get_contas, get_dividas, get_parcelas, add_meta, get_metas, configurar_pagina
-from style import apply_style, format_currency, COLORS, PLOTLY_LAYOUT
+from style import apply_style, theme_toggle, format_currency, COLORS, PLOTLY_LAYOUT
 
 configurar_pagina("Resumo Mensal")
 
-# Aplicar estilos
-apply_style()
+# Seleção de tema
+theme = theme_toggle()
+apply_style(theme)
 
 # Botão voltar
 if st.button("🔙 Voltar à Página Inicial"):
