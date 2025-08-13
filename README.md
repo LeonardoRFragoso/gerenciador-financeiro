@@ -123,7 +123,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 **Leonardo Fragoso**
 - GitHub: [@LeonardoRFragoso](https://github.com/LeonardoRFragoso)
-- LinkedIn: [Leonardo Fragoso](https://linkedin.com/in/leonardo-fragoso)
+- LinkedIn: [Leonardo Fragoso](https://www.linkedin.com/in/leonardo-fragoso-921b166a/)
 
 ## 🙏 Agradecimentos
 
