@@ -1,0 +1,159 @@
+.chart-stats {
+  display: flex;
+  gap: 16px;
+}
+
+.chart-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--color-gray-medium);
+}
+
+.stat-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-success);
+}
+
+.line-chart {
+  position: relative;
+  height: 200px;
+  margin: 24px 0;
+}
+
+.chart-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.grid-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-gray-light);
+  display: flex;
+  align-items: center;
+}
+
+.grid-label {
+  font-size: 10px;
+  color: var(--color-gray-medium);
+  background: var(--color-secondary);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.chart-bars {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  height: 100%;
+  padding: 20px 0;
+  gap: 8px;
+}
+
+.bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+}
+
+.income-bar {
+  width: 100%;
+  max-width: 40px;
+  background: linear-gradient(to top, var(--color-success), #66bb6a);
+  border-radius: 4px 4px 0 0;
+  transition: var(--transition);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 8px;
+  min-height: 20px;
+}
+
+.income-bar:hover {
+  transform: scaleY(1.05);
+  box-shadow: var(--shadow-medium);
+}
+
+.bar-value {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-secondary);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.bar-label {
+  font-size: 12px;
+  color: var(--color-gray-medium);
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.chart-summary {
+  display: flex;
+  gap: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-gray-light);
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.summary-icon {
+  font-size: 24px;
+}
+
+.summary-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.summary-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.summary-desc {
+  font-size: 12px;
+  color: var(--color-gray-medium);
+}
+
+@media (max-width: 768px) {
+  .chart-summary {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .line-chart {
+    height: 150px;
+  }
+  
+  .income-bar {
+    max-width: 30px;
+  }
+  
+  .bar-value {
+    font-size: 9px;
+  }
+}

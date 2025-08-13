@@ -1,0 +1,153 @@
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.comparison-item {
+  padding: 16px;
+  border-radius: var(--border-radius-small);
+  border: 1px solid var(--color-gray-light);
+  transition: var(--transition);
+}
+
+.comparison-item:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-light);
+}
+
+.comparison-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.comparison-icon {
+  font-size: 20px;
+}
+
+.comparison-metric {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.comparison-values {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.value-current,
+.value-previous {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.value-label {
+  font-size: 10px;
+  color: var(--color-gray-medium);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.value-amount {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.comparison-change {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.change-indicator {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.change-amount {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.comparison-bar {
+  width: 100%;
+}
+
+.bar-background {
+  height: 4px;
+  background: var(--color-gray-light);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+.comparison-summary {
+  padding-top: 20px;
+  border-top: 1px solid var(--color-gray-light);
+}
+
+.summary-highlight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--color-accent), #e6c200);
+  border-radius: var(--border-radius-small);
+  color: var(--color-primary);
+}
+
+.highlight-icon {
+  font-size: 24px;
+}
+
+.highlight-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.highlight-title {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.highlight-desc {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .comparison-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .comparison-item {
+    padding: 12px;
+  }
+  
+  .comparison-values {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .comparison-change {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}

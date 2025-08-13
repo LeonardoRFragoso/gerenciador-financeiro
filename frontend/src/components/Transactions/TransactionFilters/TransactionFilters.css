@@ -1,0 +1,105 @@
+.filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.filters-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.filter-group {
+  margin-bottom: 24px;
+}
+
+.filter-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-btn {
+  padding: 10px 16px;
+  border: 1px solid var(--color-gray-light);
+  background: var(--color-secondary);
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 14px;
+  color: var(--color-gray-dark);
+  text-align: left;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-accent);
+  background: var(--color-gray-light);
+}
+
+.filter-btn.active {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.filter-select {
+  width: 100%;
+  padding: 10px 16px;
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--border-radius-small);
+  font-size: 14px;
+  background: var(--color-secondary);
+  color: var(--color-gray-dark);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+.filter-summary {
+  padding-top: 20px;
+  border-top: 1px solid var(--color-gray-light);
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.summary-label {
+  font-size: 12px;
+  color: var(--color-gray-medium);
+}
+
+.summary-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.summary-value.positive {
+  color: var(--color-success);
+}
+
+.summary-value.negative {
+  color: #ff6b6b;
+}

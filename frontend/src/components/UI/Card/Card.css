@@ -1,0 +1,22 @@
+.ui-card {
+  background: var(--color-secondary);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  padding: 24px;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.ui-card-hover:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+  border-color: var(--color-accent);
+}
+
+.ui-card.compact {
+  padding: 16px;
+}
+
+.ui-card.large {
+  padding: 32px;
+}

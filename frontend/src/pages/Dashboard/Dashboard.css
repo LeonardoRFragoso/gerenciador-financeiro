@@ -1,0 +1,41 @@
+.dashboard {
+  width: 100%;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto 1fr;
+  gap: 24px;
+  grid-template-areas:
+    "balance actions"
+    "chart chart"
+    "transactions transactions";
+}
+
+.dashboard-balance {
+  grid-area: balance;
+}
+
+.dashboard-actions {
+  grid-area: actions;
+}
+
+.dashboard-chart {
+  grid-area: chart;
+}
+
+.dashboard-transactions {
+  grid-area: transactions;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "balance"
+      "actions"
+      "chart"
+      "transactions";
+  }
+}

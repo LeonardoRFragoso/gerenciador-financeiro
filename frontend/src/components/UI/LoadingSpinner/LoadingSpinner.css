@@ -1,0 +1,69 @@
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  border-radius: 50%;
+  border-style: solid;
+  animation: spin 1s linear infinite;
+}
+
+/* Sizes */
+.loading-spinner.small .spinner {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+}
+
+.loading-spinner.medium .spinner {
+  width: 24px;
+  height: 24px;
+  border-width: 3px;
+}
+
+.loading-spinner.large .spinner {
+  width: 40px;
+  height: 40px;
+  border-width: 4px;
+}
+
+/* Colors */
+.loading-spinner.accent .spinner {
+  border-color: var(--accent-color) transparent var(--accent-color) transparent;
+}
+
+.loading-spinner.primary .spinner {
+  border-color: var(--text-primary) transparent var(--text-primary) transparent;
+}
+
+.loading-spinner.secondary .spinner {
+  border-color: var(--text-secondary) transparent var(--text-secondary) transparent;
+}
+
+.loading-spinner.white .spinner {
+  border-color: white transparent white transparent;
+}
+
+/* Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Protected route loading styles */
+.protected-route-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}

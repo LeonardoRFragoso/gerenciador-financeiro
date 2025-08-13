@@ -1,0 +1,143 @@
+.chart-subtitle {
+  font-size: 12px;
+  color: var(--color-gray-medium);
+  margin-top: 4px;
+}
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.category-item {
+  padding: 16px;
+  border-radius: var(--border-radius-small);
+  border: 1px solid var(--color-gray-light);
+  transition: var(--transition);
+}
+
+.category-item:hover {
+  border-color: var(--color-accent);
+  background: var(--color-gray-light);
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.category-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.category-icon {
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-gray-light);
+  border-radius: var(--border-radius-small);
+}
+
+.category-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.category-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.category-trend {
+  font-size: 11px;
+  color: var(--color-gray-medium);
+}
+
+.category-amounts {
+  text-align: right;
+}
+
+.amount-spent {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.amount-budget {
+  font-size: 12px;
+  color: var(--color-gray-medium);
+  margin-left: 4px;
+}
+
+.category-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.progress-bar {
+  height: 6px;
+  background: var(--color-gray-light);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: var(--transition);
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-percentage {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.progress-percentage.warning {
+  color: #ff6b6b;
+}
+
+.progress-remaining {
+  font-size: 11px;
+  color: var(--color-gray-medium);
+}
+
+.progress-remaining.over-budget {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .category-amounts {
+    text-align: left;
+  }
+  
+  .category-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+  }
+}

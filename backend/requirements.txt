@@ -1,0 +1,19 @@
+# Django e dependências principais
+Django==4.2.7
+djangorestframework==3.14.0
+django-cors-headers==4.3.1
+
+# Autenticação JWT
+djangorestframework-simplejwt==5.3.0
+
+# Documentação da API
+drf-yasg==1.21.7
+
+# Banco de dados
+psycopg2-binary==2.9.9
+
+# Validação e serialização
+django-filter==23.3
+
+# Desenvolvimento
+python-decouple==3.8
